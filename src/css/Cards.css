@@ -1,0 +1,209 @@
+.cards {
+    padding: var(--content-padding) 4rem 0rem;
+    background: var(--bg-primary);
+  }
+  
+  .cards h1 {
+    font-size: var(--text-4xl);
+    font-weight: var(--font-weight-bold);
+    color: var(--text-primary);
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  
+  .cards__container {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    max-width: var(--container-max-width);
+    width: 90%;
+    margin: 0 auto;
+  }
+  
+  .cards__wrapper {
+    position: relative;
+    margin: 50px 0 45px;
+    width: 100%;
+  }
+  
+  .cards__items {
+    margin-bottom: 24px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+  }
+  
+  .cards__item {
+    display: flex;
+    flex: 1;
+    margin: 0;
+    border-radius: var(--border-radius-md);
+    min-width: 280px;
+    max-width: 320px;
+  }
+
+  /* Carousel Third Party Component CSS */
+  .react-multi-carousel-list.carousel-container{
+    padding-bottom: 1rem;
+  }
+  
+  .cards__item__link {
+    display: flex;
+    flex-flow: column;
+    width: 100%;
+    height: 100%;
+    box-shadow: var(--shadow-md);
+    border-radius: var(--border-radius-md);
+    overflow: hidden;
+    text-decoration: none;
+    transition: var(--transition);
+    background: var(--white);
+  }
+
+  .cards__item__link:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-xl);
+  }
+  
+  .cards__item__pic-wrap {
+    position: relative;
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+  }
+  
+  .fade-img {
+    animation-name: fade-img;
+    animation-duration: 2s;
+  }
+  
+  .cards__item__pic-wrap::after {
+    content: attr(data-category);
+    position: absolute;
+    bottom: 0;
+    margin-left: 10px;
+    padding: 6px 8px;
+    max-width: calc((100%) - 60px);
+    font-size: var(--text-xs);
+    font-weight: var(--font-weight-bold);
+    color: var(--white);
+    background-color: var(--text-primary);
+    box-sizing: border-box;
+    border-radius: var(--border-radius-sm);
+    text-transform: uppercase;
+    letter-spacing: 0.025em;
+  }
+  
+  .cards__item__img {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: var(--transition);
+  }
+  
+  .cards__item__img:hover {
+    transform: scale(1.05);
+  }
+  
+  .cards__item__info {
+    padding: 20px 15px 30px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  .cards__item__text {
+    color: var(--text-primary);
+    font-size: var(--text-base);
+    line-height: var(--leading-normal);
+    font-weight: var(--font-weight-medium);
+  }
+
+  @media only screen and (max-width: 1400px) {
+    .cards {
+      padding: var(--content-padding) 2rem 0rem;
+      background: var(--bg-primary);
+    }
+  }
+
+  @media only screen and (min-width: 1200px) {
+    .content__blog__container {
+      width: 84%;
+    }
+  }
+  
+  @media only screen and (min-width: 1024px) {
+    .cards__items {
+      display: flex;
+    }
+  }
+  
+  @media only screen and (max-width: 1024px) {
+    .cards__item {
+      margin-bottom: 1rem;
+      min-width: 250px;
+      max-width: 280px;
+    }
+
+    .cards__items {
+      gap: 0.8rem;
+    }
+  }
+
+  @media only screen and (max-width: 768px) {
+    .cards {
+      padding: 2rem 1rem 0rem;
+      background: var(--bg-primary);
+    }
+
+    .cards__item {
+      min-width: 100%;
+      max-width: 100%;
+    }
+
+    .cards__items {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+
+
+  /* For All Courses */
+
+  .carddeck{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+    padding: 1rem 0;
+  }
+
+  .carddeck .cards__item{
+    flex: none;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    min-width: unset;
+    max-width: unset;
+  }
+  
+  @media only screen and (max-width: 1024px) {
+    .carddeck {
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 1rem;
+    }
+  }
+
+  @media only screen and (max-width: 464px) {
+    .carddeck {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+  }

@@ -1,0 +1,203 @@
+.footer-container {
+    background: var(--text-primary); /* Remove gradient, use solid black */
+    padding: 4rem 0 2rem 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .footer-subscription {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 24px;
+    padding: 24px;
+    color: var(--white);
+  }
+  
+  .footer-subscription > p {
+    font-family: var(--font-family-primary);
+  }
+  
+  .footer-subscription-heading {
+    margin-bottom: 24px;
+    font-size: var(--text-2xl);
+    font-weight: var(--font-weight-bold);
+    color: var(--white);
+  }
+  
+  .footer-subscription-text {
+    margin-bottom: 24px;
+    font-size: var(--text-lg);
+    color: var(--text-light);
+  }
+  
+  .footer-input {
+    padding: 12px 20px;
+    border-radius: var(--border-radius);
+    margin-right: 10px;
+    outline: none;
+    border: 2px solid var(--gray-600);
+    font-size: var(--text-lg);
+    margin-bottom: 16px;
+    background: var(--white);
+    color: var(--text-primary);
+    transition: var(--transition);
+  }
+  
+  .footer-input:focus {
+    border-color: var(--white);
+    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.3);
+  }
+  
+  .footer-links {
+    width: 100%;
+    max-width: 1000px;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .footer-link-wrapper {
+    display: flex;
+  }
+  
+  .footer-link-items {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin: 16px;
+    text-align: left;
+    width: 160px;
+    box-sizing: border-box;
+  }
+  
+  .footer-link-items h2 {
+    margin-bottom: 16px;
+    color: var(--white);
+    font-size: var(--text-xl);
+    font-weight: var(--font-weight-bold);
+  }
+  
+  .footer-link-items a {
+    color: var(--text-light);
+    text-decoration: none;
+    margin-bottom: 0.5rem;
+    transition: var(--transition);
+    font-weight: var(--font-weight-normal);
+  }
+  
+  .footer-link-items a:hover {
+    color: var(--white);
+    transform: translateX(4px);
+  }
+  
+  .footer-email-form h2 {
+    margin-bottom: 2rem;
+  }
+  
+  .footer-input::placeholder {
+    color: var(--text-muted);
+  }
+  
+  /* Social Icons */
+  .social-icon-link {
+    color: var(--white);
+    font-size: 24px;
+    transition: var(--transition);
+  }
+  
+  .social-icon-link:hover {
+    color: var(--primary-color);
+    transform: translateY(-2px);
+  }
+  
+  .social-media {
+    max-width: 1000px;
+    width: 100%;
+  }
+  
+  .social-media-wrap {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    max-width: 1000px;
+    margin: 40px auto 0 auto;
+  }
+  
+  .social-icons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 240px;
+  }
+  
+  .social-logo {
+    color: var(--white);
+    justify-self: start;
+    margin-left: 20px;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: var(--text-3xl);
+    font-weight: var(--font-weight-bold);
+    display: flex;
+    align-items: center;
+    margin-bottom: 16px;
+    background: var(--white); /* Remove gradient */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    transition: var(--transition);
+  }
+  
+  .social-logo:hover {
+    transform: translateX(4px);
+  }
+  
+  .website-rights {
+    color: var(--text-light);
+    margin-bottom: 16px;
+    font-size: var(--text-sm);
+  }
+  
+  @media screen and (max-width: 820px) {
+    .footer-links {
+        padding-top: 2rem;
+    }
+
+    .footer-input {
+        width: 100%;
+    }
+
+    .btn {
+        width: 100%;
+    }
+
+    .footer-link-wrapper {
+        flex-direction: column;
+    }
+
+    .social-media-wrap {
+        flex-direction: column;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .footer-container {
+        padding: 3rem 1rem 2rem 1rem;
+    }
+    
+    .footer-link-items {
+        margin: 8px;
+        width: 100%;
+    }
+    
+    .social-icons {
+        width: 100%;
+        justify-content: center;
+        gap: 2rem;
+    }
+}
