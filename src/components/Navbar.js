@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { Button } from './Button';
 import '../css/Navbar.css'
 import logo from './images/wmremove-transformed.png'
@@ -9,6 +9,10 @@ function Navbar() {
     const [button, setButton] = useState(true);
     const [isloginned, setLoginStatus] = useState(false);
     const [scrolled, setScrolled] = useState(false);
+    const [searchQuery, setSearchQuery] = useState('');
+    const [showSearchBar, setShowSearchBar] = useState(false);
+    
+    const navigate = useNavigate();
 
     const handleClick = () => setClick(!click);
     const closeMobileMenu = () => setClick(false);
@@ -43,6 +47,24 @@ function Navbar() {
             }
         }
     }
+
+    const handleSearch = (e) => {
+        e.preventDefault();
+        if (searchQuery.trim()) {
+            navigate(`/search?q=${encodeURIComponent(searchQuery.trim())}`);
+            setSearchQuery('');
+            setShowSearchBar(false);
+        }
+    };
+
+    const toggleSearchBar = () => {
+        setShowSearchBar(!showSearchBar);
+        if (!showSearchBar) {
+            setTimeout(() => {
+                document.querySelector('.search-input')?.focus();
+            }, 100);
+        }
+    };
 
     useEffect(() => {
         checkLogin();
@@ -121,18 +143,48 @@ function Navbar() {
                             <span>Blog</span>
                         </Link>
                     </li>
+                    {isloginned && (
+                        <li className='nav-item'>
+                            <Link to='/dashboard' className='nav-links' onClick={closeMobileMenu}>
+                                <i className="fas fa-tachometer-alt nav-icon"></i>
+                                <span>Dashboard</span>
+                            </Link>
+                        </li>
+                    )}
                 </ul>
+
+                {/* Search bar */}
+                <div className={`search-container ${showSearchBar ? 'active' : ''}`}>
+                    <form onSubmit={handleSearch} className="search-form">
+                        <input
+                            type="text"
+                            className="search-input"
+                            placeholder="Search courses..."
+                            value={searchQuery}
+                            onChange={(e) => setSearchQuery(e.target.value)}
+                        />
+                        <button type="submit" className="search-submit-btn">
+                            <i className="fas fa-search"></i>
+                        </button>
+                    </form>
+                </div>
 
                 {/* Right side menu */}
                 <div className='nav-actions'>
                     <div className="nav-icons">
-                        <button className="icon-btn search-btn" aria-label="Search">
+                        <button 
+                            className={`icon-btn search-btn ${showSearchBar ? 'active' : ''}`} 
+                            onClick={toggleSearchBar}
+                            aria-label="Search"
+                        >
                             <i className="fas fa-search"></i>
                         </button>
-                        <button className="icon-btn notification-btn" aria-label="Notifications">
-                            <i className="far fa-bell"></i>
-                            <span className="notification-badge">3</span>
-                        </button>
+                        {isloginned && (
+                            <button className="icon-btn notification-btn" aria-label="Notifications">
+                                <i className="far fa-bell"></i>
+                                <span className="notification-badge">3</span>
+                            </button>
+                        )}
                     </div>
 
                     {/* Authentication buttons for desktop */}
@@ -189,7 +241,11 @@ function Navbar() {
                                 )}
                                 {isloginned && (
                                     <>
-                                        <Link to='/instructor/mycourses' className='dropdown-item'>
+                                        <Link to='/dashboard' className='dropdown-item'>
+                                            <i className="fas fa-tachometer-alt"></i>
+                                            <span>Dashboard</span>
+                                        </Link>
+                                        <Link to='/instructor/dashboard' className='dropdown-item'>
                                             <i className="fas fa-chalkboard-teacher"></i>
                                             <span>Instructor Dashboard</span>
                                         </Link>
