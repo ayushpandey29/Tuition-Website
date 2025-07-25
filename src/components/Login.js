@@ -60,7 +60,9 @@ const Login = () => {
         localStorage.setItem('user-info', JSON.stringify(mockUserData));
         
         alert("Login successful! (Frontend Demo Mode)");
-        navigate("/");
+
+        // Refresh the page after login
+        window.location.reload();
     }
     
     // Render the login form
